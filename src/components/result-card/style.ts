@@ -6,6 +6,7 @@ export const StyledResultCard = styled.div`
   gap: 15px;
   background-color: #000;
   justify-items: center;
+  align-content: space-between;
   padding: 20px;
   border-radius: 10px;
   color: #fff;
@@ -17,6 +18,7 @@ export const StyledResultCard = styled.div`
   img {
     width: 80%;
     border: 2px solid #fff;
+    
   
   }
 
