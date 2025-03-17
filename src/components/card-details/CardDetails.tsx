@@ -40,7 +40,7 @@ export const CardDetails = () => {
   }, [id])
   
   const handleBackToSearchPage = () => {
-    navigate(`/`) // go back to search page
+    navigate(`/`) // goes back to search page
   }
     return (
     <>
