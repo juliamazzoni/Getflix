@@ -50,7 +50,7 @@ export const SearchPage = () => {
           <StyledLogo>Getflix</StyledLogo>
           <form onSubmit={handleSubmit}>
             <StyledSearchBar>
-              <input placeholder="Find your movie - Type a title here" type="text" onChange={handleOnChange}/>
+              <input placeholder="Find a movie" type="text" onChange={handleOnChange}/>
               <StyledRedButton>
                 <button type="submit">Search Content</button>
               </StyledRedButton>

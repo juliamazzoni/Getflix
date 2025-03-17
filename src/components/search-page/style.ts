@@ -8,6 +8,18 @@ export const StyledSearchPage = styled.div`
   color: #fff;
 `
 
+export const StyledHeader = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+`
+
 export const StyledSearchBar = styled.div`
   display: flex;
   gap: 5px;
@@ -15,26 +27,38 @@ export const StyledSearchBar = styled.div`
   
   input {
    padding-left: 10px;
-   width: 210px;
+   width: 120px;
 
    &::placeholder {
     color: #9f9f9f;
    }
   }
+
+  @media (min-width: 480px) {
+    input {
+      width: 210px;
+    }
+  }
+ 
 `
 export const StyledCard = styled.div`
   display: grid;
   gap: 10px;
 `
 
-export const StyledHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`
+
 
 export const StyledLogo = styled.h1`
   color: red;
+  font-size: 25px;
+
+  @media (min-width: 480px) {
+    font-size: 30px;
+  }
+
+  @media (min-width: 760px) {
+    font-size: 35px;
+  }
 `
 
 export const StyledImage = styled.div`

@@ -9,4 +9,11 @@ export const StyledRedButton = styled.div`
     border-radius: 5px;
     cursor: pointer;
   }
+
+  @media (max-width: 480px) {
+    button {
+      background-color: blue;
+      font-size: 10px;
+    }
+  }
 `

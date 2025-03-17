@@ -1,5 +1,5 @@
 import { MatchingResultsProps } from "./types"
-import { StyledResults } from "./style"
+import { StyledResults, StyledErrorMessage } from "./style"
 import { ResultCard } from "../result-card/ResultCard"
 import { useNavigate } from "react-router-dom"
 
@@ -12,7 +12,7 @@ export const MatchingResults = ({ results, error }: MatchingResultsProps) => {
 
   return (
     <>
-      {error ?  <p>Oops... something went wrong. Try again!</p> 
+      {error ?  <StyledErrorMessage>Oops... something went wrong. Try again!</StyledErrorMessage> 
       :  
       <StyledResults>
         {results.map(result => 
