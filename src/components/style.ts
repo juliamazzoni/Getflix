@@ -12,7 +12,6 @@ export const StyledRedButton = styled.div`
 
   @media (max-width: 480px) {
     button {
-      background-color: blue;
       font-size: 10px;
     }
   }

@@ -8,7 +8,12 @@ export const StyledCardDetails = styled.div`
   padding: 25px;
   justify-items: center;
   color: #fff;
-  max-width: 700px;
+  max-width: 350px;
+  min-width: 220px;
   margin: auto;
+
+  @media (min-width: 768px) {
+    max-width: 700px;
+  }
 ` 
 

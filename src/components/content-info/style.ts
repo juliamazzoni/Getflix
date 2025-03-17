@@ -2,9 +2,17 @@ import styled from "styled-components"
 
 export const StyledContentInfo = styled.div`
   display: grid;
-  grid-template-columns:  300px 1fr;
+  grid-template-columns: 1fr;
   gap: 20px;
   border-radius: 5px;
+  
+  img {
+    width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    grid-template-columns: 300px 1fr;
+  }
 `
 
 export const StyledDetails = styled.div`
