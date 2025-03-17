@@ -23,7 +23,11 @@ a:hover {
 } */
 
 body {
-  background-color: rgb(173, 136, 136);
+  background-color: #000;
+  margin: 30px 50px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 0;
   /* margin: 0;
   display: flex;
   place-items: center;

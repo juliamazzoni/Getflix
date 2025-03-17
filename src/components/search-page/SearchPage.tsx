@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom";
 import { StyledSearchPage, StyledSearchBar, StyledResults } from "./style"
+import { StyledRedButton } from "../style";
 import { ResultCard } from "../result-card/ResultCard";
 import { Results } from "./types";
 
@@ -39,8 +40,10 @@ export const SearchPage = () => {
     <StyledSearchPage>
       <form onSubmit={handleSubmit}>
         <StyledSearchBar>
-          <input type="text" onChange={handleOnChange}/>
-          <button type="submit">Search Movies</button>
+          <input placeholder="Type a title here" type="text" onChange={handleOnChange}/>
+          <StyledRedButton>
+            <button type="submit">Search Content</button>
+          </StyledRedButton>
         </StyledSearchBar>
       </form>
       {results.length > 0 && 

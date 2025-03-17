@@ -4,11 +4,11 @@ import styled from "styled-components"
 export const StyledResultCard = styled.div`
   display: grid;
   gap: 15px;
-  background-color: #000;
+  background-color: #303030;;
   justify-items: center;
   align-content: space-between;
-  padding: 20px;
-  border-radius: 10px;
+  padding: 20px 0;
+  border-radius: 5px;
   color: #fff;
 
   h1 {
@@ -17,9 +17,6 @@ export const StyledResultCard = styled.div`
 
   img {
     width: 80%;
-    border: 2px solid #fff;
-    
-  
   }
 
   h4 {
