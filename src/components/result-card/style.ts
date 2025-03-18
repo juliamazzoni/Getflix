@@ -20,6 +20,7 @@ export const StyledResultCard = styled.div`
 
   img {
     width: 75%;
+    cursor: pointer;
   }
 
   h4 {
@@ -27,7 +28,6 @@ export const StyledResultCard = styled.div`
   }
 
   &:hover {
-    cursor: pointer;
     transform: scale(1.05); /* Slightly enlarges the card */
     background-color: #4f4f4f;
   }

@@ -1,9 +1,9 @@
 import { StyledResultCard } from "./style"
 import { ResultCardProps } from "./types"
 
-export const ResultCard = ({ children, onClick }: ResultCardProps) => {
+export const ResultCard = ({ children }: ResultCardProps) => {
   return (
-    <StyledResultCard onClick={onClick}>
+    <StyledResultCard >
       {children}
     </StyledResultCard>
   )

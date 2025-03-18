@@ -22,3 +22,13 @@ export const StyledResults = styled.div`
     grid-template-columns: repeat(3, 1fr);
   }
 `
+
+export const StyledFooter = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;;
+
+
+`

@@ -59,7 +59,7 @@ export const SearchPage = () => {
         {loading ? 
         <LoadingIcon /> 
         : 
-        <MatchingResults results={results} error={fetchingError}/> 
+        <MatchingResults results={results} error={fetchingError} setResults={setResults}/> 
         } 
 
       
