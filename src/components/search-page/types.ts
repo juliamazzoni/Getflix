@@ -5,5 +5,5 @@ export interface Results {
   Type: string, 
   Year: string, 
   imdbID: string,
-  isHeartFilled: boolean,
+  isHeartFilled?: boolean,
 }

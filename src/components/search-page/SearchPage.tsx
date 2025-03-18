@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { LoadingIcon } from "../loading-icon/LoadingIcon";
 import { MatchingResults } from "../matching-results/MatchingResults";
 import { StyledSearchPage, StyledSearchBar, StyledHeader, StyledLogo, StyledImage } from "./style"
@@ -6,11 +6,27 @@ import { StyledRedButton } from "../style";
 import { Results } from "./types";
 
 export const SearchPage = () => {
+
   const apiKey = import.meta.env.VITE_OMDB_API_KEY;
   const [title, setTitle] = useState('')
   const [loading, setLoading] = useState(false)
   const [fetchingError, setFetchingError] = useState(false)
   const [results, setResults] = useState<Results[]>([])
+  const [watchlist, setWatchlist] = useState<Results[]>([])
+
+  console.log(watchlist)
+
+  useEffect(() => {
+    const storedItems = localStorage.getItem("watchlist");
+    if (storedItems) {
+      try {
+        setWatchlist(JSON.parse(storedItems)); // Parse only if valid
+      } catch (error) {
+        console.error("Error parsing watchlist:", error);
+        setWatchlist([]); // Reset to empty array if JSON is invalid
+      }
+    }
+  }, []);
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const trimmedTitle = (e.target.value).trimEnd() // Remove extra spaces after title on input
@@ -27,7 +43,15 @@ export const SearchPage = () => {
       const data = await res.json()
 
       if(data.Search) {
-        setResults(data.Search)
+        const fetchedData: Results[] = data.Search
+        const updatedData = (fetchedData).map((item):Results => { 
+          if(watchlist.some(watchlistItem => watchlistItem.imdbID === item.imdbID)){
+            return {...item, isHeartFilled: true} // Set the isHeartFilled to true if this item is inside the watchlist
+          }
+          return item
+        })
+        setResults(updatedData)
+
       } else {
         setResults([]) // Set results to an empty array if no data has been found
         setFetchingError(true)
@@ -59,7 +83,7 @@ export const SearchPage = () => {
         {loading ? 
         <LoadingIcon /> 
         : 
-        <MatchingResults results={results} error={fetchingError} setResults={setResults}/> 
+        <MatchingResults results={results} error={fetchingError} setResults={setResults} setWatchlist={setWatchlist} watchlist={watchlist}/> 
         } 
 
       

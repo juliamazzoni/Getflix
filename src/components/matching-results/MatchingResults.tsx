@@ -8,7 +8,7 @@ import EmptyHeartIcon from '/assets/icons/empty-heart-icon.svg';
 import { Results } from "../search-page/types"
 
 
-export const MatchingResults = ({ results, error, setResults }: MatchingResultsProps) => {
+export const MatchingResults = ({ results, error, setResults, setWatchlist, watchlist }: MatchingResultsProps) => {
   const navigate = useNavigate()
 
   const handleCardClick = (id: string) => {
@@ -25,8 +25,9 @@ export const MatchingResults = ({ results, error, setResults }: MatchingResultsP
       return item
     })
     setResults(updatedResults) // Update the results array to include the new key-value pair for heart-icon on the item clicked
+    setWatchlist([...watchlist, result]) // add the result item to user Watchlist 
+    localStorage.setItem('watchlist', JSON.stringify([...watchlist, result]))
 
-    // continue to add the result item to user Watchlist 
   }
 
   const handleRemoveItem = (result: Results) => {
@@ -40,7 +41,10 @@ export const MatchingResults = ({ results, error, setResults }: MatchingResultsP
     })
     setResults(updatedResults)
 
-    // continue to remove the result item from user Watchlist  
+    
+    const updatedWatchlist = watchlist.filter(item => item.Title !== result.Title)
+    setWatchlist(updatedWatchlist)
+    localStorage.setItem('watchlist', JSON.stringify(updatedWatchlist))
   }
 
   return (
