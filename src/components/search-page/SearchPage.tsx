@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { LoadingIcon } from "../loading-icon/LoadingIcon";
 import { MatchingResults } from "../matching-results/MatchingResults";
+import { Watchlist } from "../watchlist/Watchlist";
 import { StyledSearchPage, StyledSearchBar, StyledHeader, StyledLogo, StyledImage } from "./style"
 import { StyledRedButton } from "../style";
 import { Results } from "./types";
@@ -13,8 +14,6 @@ export const SearchPage = () => {
   const [fetchingError, setFetchingError] = useState(false)
   const [results, setResults] = useState<Results[]>([])
   const [watchlist, setWatchlist] = useState<Results[]>([])
-
-  console.log(watchlist)
 
   useEffect(() => {
     const storedItems = localStorage.getItem("watchlist");
@@ -79,6 +78,8 @@ export const SearchPage = () => {
             </StyledSearchBar>
           </form>
         </StyledHeader>
+
+        {watchlist.length > 0 && <Watchlist watchlist={watchlist} />}
 
         {loading ? 
         <LoadingIcon /> 
