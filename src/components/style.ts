@@ -8,6 +8,7 @@ export const StyledRedButton = styled.div`
     padding: 5px 20px;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
 
     &:hover {
       background-color: #f32020;
