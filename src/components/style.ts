@@ -10,7 +10,7 @@ export const StyledRedButton = styled.div`
     cursor: pointer;
 
     &:hover {
-      background-color: #f32020;;
+      background-color: #f32020;
     }
   }
 

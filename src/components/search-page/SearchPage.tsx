@@ -12,17 +12,15 @@ export const SearchPage = () => {
   const [fetchingError, setFetchingError] = useState(false)
   const [results, setResults] = useState<Results[]>([])
 
-  console.log(results)
-
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const trimmedTitle = (e.target.value).trimEnd()
+    const trimmedTitle = (e.target.value).trimEnd() // Remove extra spaces after title on input
     setTitle(trimmedTitle)
   }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    setFetchingError(false)
-    setLoading(true)
+    setFetchingError(false) // reset error state on new fetch 
+    setLoading(true) // starts loading before fetching data
 
     try {
       const res = await fetch(`https://www.omdbapi.com/?s=${title}&apikey=${apiKey}`)
@@ -31,15 +29,15 @@ export const SearchPage = () => {
       if(data.Search) {
         setResults(data.Search)
       } else {
-        setResults([])
+        setResults([]) // Set results to an empty array if no data has been found
         setFetchingError(true)
       }
     } catch (error) {
       console.error("Error fetching data:", error)
       setResults([])
-      setFetchingError(true)
+      setFetchingError(true) 
     } finally {
-      setLoading(false)
+      setLoading(false) // stops loading after the data is fetched
     }
   }
 
