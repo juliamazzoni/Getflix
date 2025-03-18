@@ -16,35 +16,32 @@ export const MatchingResults = ({ results, error, setResults, setWatchlist, watc
   }
 
   const handleAddItem = (result: Results) => {
-    // Update the heart-icon to be filled 
     const updatedResults = results.map(item => {
-      if(item === result){
-        item = {...item, isHeartFilled: true} // Add a new key-value pair for the heart icon
+      if(item.imdbID === result.imdbID){
+        item = {...item, isHeartFilled: true} // Add a new key-value pair so the heart-icon will be filled
         return item
       }
       return item
     })
-    setResults(updatedResults) // Update the results array to include the new key-value pair for heart-icon on the item clicked
-    setWatchlist([...watchlist, result]) // add the result item to user Watchlist 
-    localStorage.setItem('watchlist', JSON.stringify([...watchlist, result]))
+    setResults(updatedResults) // Update the results array to include the new key-value pair for heart-icon once clicked
 
+    setWatchlist([...watchlist, result]) // add the clicked item to user Watchlist 
+    localStorage.setItem('watchlist', JSON.stringify([...watchlist, result])) // add the clicked item to local storage
   }
 
   const handleRemoveItem = (result: Results) => {
-    // Update the heart-icon to be empty
     const updatedResults = results.map(item => {
-      if(item === result){
-        item = {...item, isHeartFilled: false}
+      if(item.imdbID === result.imdbID){
+        item = {...item, isHeartFilled: false} // Set the isHeartFilled to false to the heart-icon will be empty
         return item
       }
       return item
     })
-    setResults(updatedResults)
+    setResults(updatedResults) // Update the results array to update the key-value pair for heart-icon once is clicked
 
-    
-    const updatedWatchlist = watchlist.filter(item => item.Title !== result.Title)
-    setWatchlist(updatedWatchlist)
-    localStorage.setItem('watchlist', JSON.stringify(updatedWatchlist))
+    const updatedWatchlist = watchlist.filter(item => item.imdbID !== result.imdbID)
+    setWatchlist(updatedWatchlist) // Remove the clicked item from wathclist 
+    localStorage.setItem('watchlist', JSON.stringify(updatedWatchlist)) // Remove the clicked item from local storage 
   }
 
   return (
