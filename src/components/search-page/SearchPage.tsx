@@ -15,6 +15,9 @@ export const SearchPage = () => {
   const [results, setResults] = useState<Results[]>([])
   const [watchlist, setWatchlist] = useState<Results[]>([])
 
+
+console.log(watchlist)
+
   useEffect(() => {
     const storedItems = localStorage.getItem("watchlist");
     if (storedItems) {
@@ -79,7 +82,7 @@ export const SearchPage = () => {
           </form>
         </StyledHeader>
 
-        {watchlist.length > 0 && <Watchlist watchlist={watchlist} />}
+        {watchlist.length > 0 && <Watchlist watchlist={watchlist} setWatchlist={setWatchlist} results={results} setResults={setResults} />}
 
         {loading ? 
         <LoadingIcon /> 
@@ -89,7 +92,7 @@ export const SearchPage = () => {
 
       
       </StyledSearchPage>
-      {results.length === 0 && !loading && <StyledImage><img src="./public/images/background-image.jpeg" alt="" /></StyledImage>}
+      {results.length === 0 && !loading && <StyledImage><img src="/images/background-image.jpeg" alt="" /></StyledImage>}
     </>
   )
 }
