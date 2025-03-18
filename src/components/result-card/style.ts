@@ -13,15 +13,17 @@ export const StyledResultCard = styled.div`
   transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;; /* smooth animation on card */
 
   h1 {
-    font-size: 16px;
+    font-size: 12px;
+    padding: 0 20px;
+    align-self: center;
   }
 
   img {
-    width: 80%;
+    width: 75%;
   }
 
   h4 {
-    font-size: 18px;
+    font-size: 10px;
   }
 
   &:hover {

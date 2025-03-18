@@ -28,6 +28,7 @@ export const StyledSearchBar = styled.div`
   input {
    padding-left: 10px;
    width: 120px;
+   outline: none;
 
    &::placeholder {
     color: #9f9f9f;
@@ -46,10 +47,8 @@ export const StyledCard = styled.div`
   gap: 10px;
 `
 
-
-
 export const StyledLogo = styled.h1`
-  color: red;
+  color: #f32020;
   font-size: 25px;
 
   @media (min-width: 480px) {
