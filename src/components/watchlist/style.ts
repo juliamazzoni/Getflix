@@ -12,9 +12,10 @@ export const StyledWatchlistRow = styled.div`
   flex-direction: row;
   gap: 10px;
   flex-wrap: wrap;
-  height: 200px;
+  height: 205px;
   justify-content: flex-start;
   overflow: auto;
+  padding: 5px;
 
   &::-webkit-scrollbar {
     display: none;
@@ -22,7 +23,6 @@ export const StyledWatchlistRow = styled.div`
 `
 
 export const StyledWatchlistCard = styled.div`
-
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -34,5 +34,11 @@ export const StyledWatchlistCard = styled.div`
   img {
     height: 180px;
     border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 `
