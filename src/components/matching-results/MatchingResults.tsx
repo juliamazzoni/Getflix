@@ -46,7 +46,7 @@ export const MatchingResults = ({ results, error, setResults, setWatchlist, watc
 
   return (
     <>
-      {error ?  <StyledErrorMessage>Oops... something went wrong. Try again!</StyledErrorMessage> 
+      {error ? <StyledErrorMessage>Oops... something went wrong. Try again!</StyledErrorMessage> 
       :  
       <StyledResults>
         {results.map(result => 

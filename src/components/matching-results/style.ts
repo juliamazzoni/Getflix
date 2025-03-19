@@ -28,7 +28,12 @@ export const StyledFooter = styled.div`
   flex-direction: row;
   width: 100%;
   justify-content: space-around;
-  align-items: center;;
+  align-items: center;
 
+ svg {
+    path { 
+      color: red;
+    }
+  }
 
 `
