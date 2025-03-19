@@ -5,6 +5,11 @@
 
 Getflix is a **single-page application (SPA)** that allows users to search for **movies and series**, view detailed information, and save their favorite titles to a watchlist. The app is built with **React** and powered by the [OMDb API](https://www.omdbapi.com/) to provide an interactive and responsive user experience.  
 
+## 🌍 Live Demo  
+
+[👉 Click here to see Getflix live!](https://getflix.surge.sh/)
+
+
 ## 🚀 How to Use Getflix  
 
 ![Getflix Preview](public/images/getflix-image.png)
