@@ -2,21 +2,17 @@ import { useState, useEffect } from "react"
 import { LoadingIcon } from "../loading-icon/LoadingIcon";
 import { MatchingResults } from "../matching-results/MatchingResults";
 import { Watchlist } from "../watchlist/Watchlist";
-import { StyledSearchPage, StyledSearchBar, StyledHeader, StyledLogo, StyledImage } from "./style"
+import { StyledSearchPage, StyledSearchBar, StyledTextInputAndButton, StyledTextInput, StyledTypeInputContainer, StyledTypeInput, StyledHeader, StyledLogo, StyledImage } from "./style"
 import { StyledRedButton } from "../style";
 import { Results } from "./types";
 
 export const SearchPage = () => {
-
   const apiKey = import.meta.env.VITE_OMDB_API_KEY;
-  const [title, setTitle] = useState('')
+  const [userInput, setUserInput] = useState<Partial<{title: string, type?: string}>>({})
   const [loading, setLoading] = useState(false)
   const [fetchingError, setFetchingError] = useState(false)
   const [results, setResults] = useState<Results[]>([])
   const [watchlist, setWatchlist] = useState<Results[]>([])
-
-
-console.log(watchlist)
 
   useEffect(() => {
     const storedItems = localStorage.getItem("watchlist");
@@ -31,17 +27,19 @@ console.log(watchlist)
   }, []);
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const trimmedTitle = (e.target.value).trimEnd() // Remove extra spaces after title on input
-    setTitle(trimmedTitle)
-  }
+    setUserInput({...userInput, [e.target.name]: (e.target.value).trimEnd()}) // save the name and values of each input in the userInput object
+  }                                                               // Remove extra spaces after title on input to avoid errors
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setFetchingError(false) // reset error state on new fetch 
     setLoading(true) // starts loading before fetching data
 
+    const type = userInput.type ? `&type=${userInput.type}` : ''
+    const title = userInput.title
+    
     try {
-      const res = await fetch(`https://www.omdbapi.com/?s=${title}&apikey=${apiKey}`)
+      const res = await fetch(`https://www.omdbapi.com/?s=${title}&apikey=${apiKey}${type}`)
       const data = await res.json()
 
       if(data.Search) {
@@ -74,10 +72,24 @@ console.log(watchlist)
           <StyledLogo>Getflix</StyledLogo>
           <form onSubmit={handleSubmit}>
             <StyledSearchBar>
-              <input placeholder="Enter movie title" type="text" onChange={handleOnChange}/>
-              <StyledRedButton>
-                <button type="submit">Search movie</button>
-              </StyledRedButton>
+              <StyledTextInputAndButton>
+                <StyledTextInput>
+                  <input placeholder="Enter title" type="text" name='title' onChange={handleOnChange}/>
+                </StyledTextInput>
+                <StyledRedButton>
+                  <button type="submit">Search content</button>
+                </StyledRedButton>
+              </StyledTextInputAndButton>
+              <StyledTypeInputContainer>
+                <StyledTypeInput>
+                  <label>Movie</label>                
+                  <input type="radio" name="type" value="movie" onChange={handleOnChange} />                    
+                </StyledTypeInput>
+                <StyledTypeInput>
+                  <label>Series</label>                  
+                  <input type="radio" name="type" value="series" onChange={handleOnChange} />                 
+                </StyledTypeInput>
+              </StyledTypeInputContainer>
             </StyledSearchBar>
           </form>
         </StyledHeader>
@@ -89,8 +101,6 @@ console.log(watchlist)
         : 
         <MatchingResults results={results} error={fetchingError} setResults={setResults} setWatchlist={setWatchlist} watchlist={watchlist}/> 
         } 
-
-      
       </StyledSearchPage>
       {results.length === 0 && !loading && <StyledImage><img src="/images/background-image.jpeg" alt="" /></StyledImage>}
     </>

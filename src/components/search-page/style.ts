@@ -12,36 +12,70 @@ export const StyledHeader = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  align-items: stretch;
   gap: 10px;
 
   @media (min-width: 768px) {
     flex-direction: row;
+    align-items: baseline;
   }
 `
 
 export const StyledSearchBar = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  justify-items: center;  
+`
+
+export const StyledTextInputAndButton = styled.div`
   display: flex;
   gap: 5px;
-  justify-content: center;
+  align-items: center;
+`
+
+export const StyledTextInput = styled.div`
+   input {
+    outline: none;
   
-  input {
-   padding-left: 10px;
-   width: 120px;
-   outline: none;
-
-   &::placeholder {
-    color: #9f9f9f;
+    &::placeholder {
+      color: #9f9f9f;
+     }
    }
-  }
 
-  @media (min-width: 480px) {
+   @media (min-width: 480px) {
     input {
-      width: 210px;
+      width: 180px;
+      padding: 2px;
     }
   }
- 
 `
+
+export const StyledTypeInputContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+`
+
+export const StyledTypeInput = styled.div`
+  display: flex;
+  gap: 0;
+  width: 120px;
+  justify-content: center;
+  align-items: center;
+
+  label {
+    font-size: 8px;
+  }
+
+
+  @media (min-width: 380px) {
+    label {
+      font-size: 10px;
+    }
+  }
+`
+
 export const StyledCard = styled.div`
   display: grid;
   gap: 10px;
