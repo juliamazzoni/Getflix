@@ -2,8 +2,8 @@ import { useState, useEffect } from "react"
 import { LoadingIcon } from "../loading-icon/LoadingIcon";
 import { MatchingResults } from "../matching-results/MatchingResults";
 import { Watchlist } from "../watchlist/Watchlist";
-import { StyledSearchPage, StyledSearchBar, StyledTextInputAndButton, StyledTextInput, StyledTypeInputContainer, StyledTypeInput, StyledHeader, StyledLogo, StyledImage } from "./style"
-import { StyledRedButton } from "../style";
+import { Header } from "../header/Header";
+import { StyledSearchPage, StyledImage } from "./style"
 import { Results } from "./types";
 
 export const SearchPage = () => {
@@ -51,7 +51,6 @@ export const SearchPage = () => {
           return item
         })
         setResults(updatedData)
-
       } else {
         setResults([]) // Set results to an empty array if no data has been found
         setFetchingError(true)
@@ -68,31 +67,8 @@ export const SearchPage = () => {
   return (
     <>
       <StyledSearchPage>
-        <StyledHeader>
-          <StyledLogo>Getflix</StyledLogo>
-          <form onSubmit={handleSubmit}>
-            <StyledSearchBar>
-              <StyledTextInputAndButton>
-                <StyledTextInput>
-                  <input placeholder="Enter title" type="text" name='title' onChange={handleOnChange}/>
-                </StyledTextInput>
-                <StyledRedButton>
-                  <button type="submit">Search content</button>
-                </StyledRedButton>
-              </StyledTextInputAndButton>
-              <StyledTypeInputContainer>
-                <StyledTypeInput>
-                  <label>Movie</label>                
-                  <input type="radio" name="type" value="movie" onChange={handleOnChange} />                    
-                </StyledTypeInput>
-                <StyledTypeInput>
-                  <label>Series</label>                  
-                  <input type="radio" name="type" value="series" onChange={handleOnChange} />                 
-                </StyledTypeInput>
-              </StyledTypeInputContainer>
-            </StyledSearchBar>
-          </form>
-        </StyledHeader>
+
+        <Header handleSubmit={handleSubmit} handleOnChange={handleOnChange}/> 
 
         {watchlist.length > 0 && <Watchlist watchlist={watchlist} setWatchlist={setWatchlist} results={results} setResults={setResults} />}
 
